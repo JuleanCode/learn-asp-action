@@ -48,7 +48,7 @@ jobs:
         context: .
         file: ./learn-asp-action/Dockerfile
         push: true
-        tags: ${{ secrets.DOCKER_USERNAME }}/learn-asp-action:latest
+        tags: ${{ secrets.DOCKER_USERNAME }}/learn-asp-action-repo:latest
      
     
     
