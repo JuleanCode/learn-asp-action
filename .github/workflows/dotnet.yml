@@ -31,21 +31,24 @@ jobs:
       
     # docker
     - uses: actions/checkout@v2
-    - name: docker login
+
+    - name: Docker login
       env:
-        DOCKER_USER: ${{secrets.DOCKER_USER}}
-        DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
       run: |
-        docker login -u $DOCKER_USER -p $DOCKER_PASSWORD 
+        echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME --password-stdin
+
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v1
+
     - name: Build and push
       uses: docker/build-push-action@v2
       with:
-          context: .
-          file: ./learn-asp-action/Dockerfile
-          push: true
-          tags: ${{ secrets.DOCKER_USER}}/learn-asp-action:latest
+        context: .
+        file: ./learn-asp-action/Dockerfile
+        push: true
+        tags: ${{ secrets.DOCKER_USERNAME }}/learn-asp-action:latest
      
     
     
