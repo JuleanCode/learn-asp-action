@@ -33,4 +33,4 @@ jobs:
     - name: Push Docker image
       run: |
         docker login docker.io -u juleancode -p ${{ secrets.password }}
-        docker push learn-asp-action
+        docker push learn-asp-action --verbose
