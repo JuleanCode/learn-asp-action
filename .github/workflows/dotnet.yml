@@ -30,6 +30,10 @@ jobs:
       run: curl -fsSL https://get.docker.com | sudo sh
     - name: Build Docker image
       run: docker build -t learn-asp-action .
+    - name: Restart Docker daemon
+      run: sudo service docker restart
+    - name: Add user to docker group
+      run: sudo usermod -aG docker $USER
     - name: Push Docker image
       run: |
         docker login docker.io -u juleancode -p ${{ secrets.password }}
