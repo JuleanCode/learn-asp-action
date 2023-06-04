@@ -22,12 +22,12 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
+    - name: Update system packages
+      run: sudo apt-get update && sudo apt-get upgrade -y
     - name: Update package lists
       run: sudo apt-get update
     - name: Install Docker
-      run: |
-        sudo apt-get update
-        sudo apt-get install docker.io -y
+      run: curl -fsSL https://get.docker.com | sudo sh
     - name: Build Docker image
       run: docker build -t learn-asp-action .
     - name: Push Docker image
