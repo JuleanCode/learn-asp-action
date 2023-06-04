@@ -45,7 +45,7 @@ jobs:
     - name: Build and push
       uses: docker/build-push-action@v2
       with:
-        context: ./src/learn-asp-action  # Update the context path if necessary
+        context: C:\Documents\School\HBO B\B2C6\InleverOpdracht\learn-asp-action\learn-asp-action  # Update the context path if necessary
         file: ./Dockerfile  # Update the Dockerfile path if necessary
         push: true
         tags: ${{ secrets.DOCKER_USERNAME }}/learn-asp-action/repo:latest
